@@ -6,12 +6,12 @@ This tutorial shows how to create an asynchronous [Slack Command](https://api.sl
 
 C# Lambda functions can be slow to respond on cold start. This can be a problem when they are used to respond to Slack requests which time-out after only 3 seconds. The solution is to funnel the Slack request as an event to the Lambda function and create a fake successful empty response. The following steps show you how to achieve just that.
 
-1. [Create an API Gateway](#create-an-api-gateway)
-2. [Create an API Resource](#create-an-api-resource)
-3. [Publish the Lambda Function](#publish-the-lambda-function)
-4. [Invoke the Lambda Function from the API](#invoke-the-lambda-function-from-the-api-resource)
-5. [Deploy the API Gateway](#deploy-the-api-gateway)
-6. [Setup the Slack Integration](#setup-the-slack-integration)
+1. [Create an API Gateway](#1-create-an-api-gateway)
+2. [Create an API Resource](#2-create-an-api-resource)
+3. [Publish the Lambda Function](#3-publish-the-lambda-function)
+4. [Invoke the Lambda Function from the API](#4-invoke-the-lambda-function-from-the-api-resource)
+5. [Deploy the API Gateway](#5-deploy-the-api-gateway)
+6. [Setup the Slack Integration](#6-setup-the-slack-integration)
 
 The AWS setup is shown as [AWS CLI](https://docs.aws.amazon.com/cli/latest/reference/index.html) commands that can be run from a `bash` shell.
 
@@ -199,3 +199,27 @@ Copy the complete URL to the Lambda function and follow these steps:
 12. Type `/slackdemo` and hit **ENTER**.
 
 If all went well, you should see `Hello World!` as response (which may take a few seconds).
+
+# License
+
+MIT License
+
+Copyright (c) 2018 λ#
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
