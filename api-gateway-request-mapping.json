@@ -1,0 +1,3 @@
+{
+    "application/x-www-form-urlencoded": "{\n    #foreach($token in $input.path('$').split('&'))\n        #set($keyVal = $token.split('='))\n        #set($keyValSize = $keyVal.size())\n        #if($keyValSize == 2)\n            #set($key = $util.escapeJavaScript($util.urlDecode($keyVal[0])))\n            #set($val = $util.escapeJavaScript($util.urlDecode($keyVal[1])))\n            \"$key\": \"$val\"#if($foreach.hasNext),#end\n        #end\n    #end\n}"
+}
