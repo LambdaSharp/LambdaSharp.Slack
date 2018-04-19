@@ -1,4 +1,4 @@
-# LambdaSharp.Slack
+# LambdaSharp.Slack Setup
 
 This tutorial shows how to create an asynchronous [Slack Command](https://api.slack.com/slash-commands) handler in C# using [.Net Core](https://dotnet.github.io).
 
