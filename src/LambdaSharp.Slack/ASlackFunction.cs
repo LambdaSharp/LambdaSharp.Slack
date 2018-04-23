@@ -37,10 +37,10 @@ using Newtonsoft.Json;
 
 namespace LambdaSharp.Slack {
 
-    public class SlackBadTokenException : Exception {
+    public class SlackVerificationTokenMismatchException : Exception {
 
         //--- Constructors ---
-        public SlackBadTokenException() : base("Invalid slack token") {}
+        public SlackVerificationTokenMismatchException() : base("Slack verification token does not match") {}
     }
 
     public abstract class ASlackFunction {
@@ -48,44 +48,12 @@ namespace LambdaSharp.Slack {
         //--- Class Fields ---
         public static HttpClient HttpClient = new HttpClient();
 
-        //--- Class Methods ---
-        protected static string[] ParseIntoCommandLineArguments(string text) {
-            var inQuotes = false;
-            return Split(text ?? "", c => {
-                if(c == '\"') {
-                    inQuotes = !inQuotes;
-                }
-                return !inQuotes && c == ' ';
-            }).Select(arg => TrimMatchingQuotes(arg.Trim(), '\"'))
-                .Where(arg => !string.IsNullOrEmpty(arg))
-                .ToArray();
-
-            // local functions
-            string TrimMatchingQuotes(string value, char quote) {
-                if((value.Length >= 2) && (value[0] == quote) && (value[value.Length - 1] == quote)) {
-                    return value.Substring(1, value.Length - 2);
-                }
-                return value;
-            }
-
-            IEnumerable<string> Split(string value, Func<char, bool> controller) {
-                var nextPiece = 0;
-                for(var c = 0; c < value.Length; c++) {
-                    if(controller(value[c])) {
-                        yield return value.Substring(nextPiece, c - nextPiece);
-                        nextPiece = c + 1;
-                    }
-                }
-                yield return value.Substring(nextPiece);
-            }
-        }
-
         //--- Fields ---
-        private readonly string _slackToken;
+        private readonly string _slackVerificationToken;
 
         //--- Constructors ---
         public ASlackFunction() {
-            _slackToken = Environment.GetEnvironmentVariable("slack_token");
+            _slackVerificationToken = Environment.GetEnvironmentVariable("slack_token");
         }
 
         //--- Abstract Methods ---
@@ -105,8 +73,8 @@ namespace LambdaSharp.Slack {
                     Console.SetError(consoleErrorWriter);
 
                     // validate the slack token (assuming one was configured)
-                    if(!(_slackToken?.Equals(request.Token) ?? true)) {
-                        throw new SlackBadTokenException();
+                    if(!(_slackVerificationToken?.Equals(request.Token) ?? true)) {
+                        throw new SlackVerificationTokenMismatchException();
                     }
 
                     // handle slack request
