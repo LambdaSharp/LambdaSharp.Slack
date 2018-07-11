@@ -155,7 +155,7 @@ aws apigateway  put-integration-response \
     --response-templates "{ \"application/json\": \"{\\r\\n    \\\"response_type\\\": \\\"in_channel\\\",\r\n    \\\"text\\\": \\\"\\\"\\r\\n}\" }"
 ```
 
-(NOTE: I must admit that it's been too long since I figured out this whole spiel and I don't remember why the next command is needed. If you know--or figure out--why it's needed, please send me a pull-request with the explanation!)
+Finally, we need to let ApiGateway know that `application/json` responses are valid and don't need to be schema checked.
 
 ```bash
 aws apigateway put-method-response \
