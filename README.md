@@ -1,3 +1,6 @@
+> <span style="font-size: larger;">This repository is obsolete and was supplanted by [λ# Tool](https://github.com/LambdaSharp/LambdaSharpTool), which offers the same capabilities and many more.</span>
+
+
 # LambdaSharp.Slack Setup
 
 This tutorial shows how to create an asynchronous [Slack Command](https://api.slack.com/slash-commands) handler in C# using [.Net Core](https://dotnet.github.io).
@@ -90,7 +93,7 @@ aws iam put-role-policy \
     --policy-document "{ \"Version\": \"2012-10-17\", \"Statement\": [{ \"Effect\": \"Allow\", \"Action\": [ \"lambda:InvokeFunction\" ], \"Resource\": [ \"$LAMBDA_ARN\" ]}]}"
 ```
 
-Next, we add a `POST` method to our API resource to respond to Slack requests. 
+Next, we add a `POST` method to our API resource to respond to Slack requests.
 
 ```bash
 aws apigateway put-method \
