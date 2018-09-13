@@ -1,6 +1,15 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <PackageVersion>0.1.0</PackageVersion>
+    <Authors>Steve G. Bjorg</Authors>
+    <Description>Provides a base class for creating Slack Command handlers using AWS Lambda.</Description>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <PackageProjectUrl>https://github.com/LambdaSharp/LambdaSharp.Slack</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/LambdaSharp/LambdaSharp.Slack</RepositoryUrl>
+    <PackageLicenseUrl>https://github.com/LambdaSharp/LambdaSharp.Slack/blob/master/LICENSE</PackageLicenseUrl>
+    <Copyright>Copyright 2018 (c) LambdaSharp. All rights reserved.</Copyright>
+    <PackageTags>AWS Lambda Slack</PackageTags>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Amazon.Lambda.Core" Version="1.0.0" />
